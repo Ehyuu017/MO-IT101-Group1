@@ -57,7 +57,7 @@ public class Main {
         Scanner emp = new Scanner(System.in);
 
         // Prompt the user to input employee number
-        System.out.print("Enter employee number: ");
+        System.out.print("Enter Employee Number: ");
         int inputEmployeeNumber = emp.nextInt();
 
         // Find the employee with the entered number
