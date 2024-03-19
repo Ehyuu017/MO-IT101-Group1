@@ -5,18 +5,13 @@
 package motorphps.motorph;
 
 
-
-
-
 /**
  *
  * @author Nesty
  */
 
 
-
-
-
+import java.io.IOException;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
@@ -44,7 +39,7 @@ public class MotorPH {
              "Christian Mata",
              "Selena De Leon",
              "Allison San Jose",
-             "Cydney  Rosario",
+             "Cydney Rosario",
              "Mark Bautista",
              "Darlene Lazaro",
              "Kolby Delos Santos",
@@ -389,39 +384,39 @@ public class MotorPH {
 
         String[] Supervisor = 
             {"N/A",
-            "Garcia, Manuel III",
-            "Garcia, Manuel III",
-            "Garcia, Manuel III",
-            "Lim, Antonio",
-            "Lim, Antonio",
-            "Villanueva, Andrea Mae",
-            "San, Jose Brad",
-            "San, Jose Brad",
-            "Aquino, Bianca Sofia",
-            "Alvaro, Roderick",
-            "Salcedo, Anthony",
-            "Salcedo, Anthony",
-            "Salcedo, Anthony",
-            "Lim, Antonio",
-            "Romualdez, Fredrick",
-            "Romualdez, Fredrick",
-            "Mata, Christian",
-            "Mata, Christian",
-            "Mata, Christian",
-            "Mata, Christian",
-            "Mata, Christian",
-            "Mata, Christian",
-            "Mata, Christian",
-            "De Leon, Selena",
-            "De Leon, Selena",
-            "De Leon, Selena",
-            "De Leon, Selena",
-            "De Leon, Selena",
-            "De Leon, Selena",
-            "De Leon, Selena",
-            "Reyes, Isabella",
-            "Reyes, Isabella",
-            "Reyes, Isabella"};
+            "Manuel Garcia III",
+            "Manuel Garcia III",
+            "Manuel Garcia III",
+            "Antonio Lim",
+            "Antonio Lim",
+            "Andrea Mae Villanueva",
+            "Brad San Jose",
+            "Brad San Jose",
+            "Bianca Sofia Aquino",
+            "Roderick Alvaro",
+            "Anthony Salcedo",
+            "Anthony Salcedo",
+            "Anthony Salcedo",
+            "Antonio Lim",
+            "Fredrick Romualdez",
+            "Fredrick Romualdez",
+            "Christian Mata",
+            "Christian Mata",
+            "Christian Mata",
+            "Christian Mata",
+            "Christian Mata",
+            "Christian Mata",
+            "Christian Mata",
+            "Selena De Leon",
+            "Selena De Leon",
+            "Selena De Leon",
+            "Selena De Leon",
+            "Selena De Leon",
+            "Selena De Leon",
+            "Selena De Leon",
+            "Isabella Reyes",
+            "Isabella Reyes",
+            "Isabella Reyes"};
         
         
         //Salary Rate Calculation
@@ -719,11 +714,16 @@ public class MotorPH {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the employee number :");
         int choice = scanner.nextInt();
-         if (choice < 1 || choice > 34) {
+        
+        //Error Handling
+        if (choice >= 1 && choice < 34) {
+            } else {
         System.out.println("No Data Found. ");
+        System.out.println("Enter the employee number :");
         choice = scanner.nextInt();
         }
-
+    
+        //Employee Hours Work and Overtime
         System.out.print("Enter hours worked of Employee : ");
         double hoursWorked = scanner.nextDouble();
         System.out.print("Enter Overtime hours of Employee : ");
@@ -752,9 +752,7 @@ public class MotorPH {
                   else if (deduction >= 666667) {
                   Tax = ((deduction - 166667) * 0.35) + 200833.33;
                   }
-                  else {
-                  Tax = 200833.33 + (deduction - 666667) * 0.35;
-                }
+                  
         double netSal = deduction - Tax;
         double netSalary = netSal + RiceSubsidy[index] + PhoneAllowance[index] + ClothingAllowance[index];
        
@@ -792,14 +790,50 @@ public class MotorPH {
         System.out.println("Clothing Allowance: " + f.format (ClothingAllowance[index]));
         System.out.println("Witholding Tax: " + f.format (Tax));
         System.out.println("Net Salary: " + f.format(netSalary));
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 4; i++)
         System.out.println();
         
-        //Clear Screen
-        scanner.nextLine(); // Clear the input buffer
-        System.out.println("Press Enter to clear the screen and exit.");
-        scanner.nextLine();
-        System.out.print("\033[H\033[2J"); // Clear the console screen
-        System.out.flush();
+        System.out.println("=====================================");
+        System.out.println("               Payslip");
+        System.out.println("=====================================");
+        System.out.println("Employee Name: " + employeeNames[index]);
+        System.out.println("Position: " + Position[index]);
+        System.out.println("SSS No: " + SSS[index]);
+        System.out.println("Philhealth No: " + Philhealth[index]);
+        System.out.println("Pagibig No: " + Pagibig[index]);
+        System.out.println("TIN No: " + TIN[index]);
+        System.out.println("**************************************");
+        System.out.println("             Contribution");
+        System.out.println("**************************************");
+        System.out.println("SSS: " + f.format(SSSd[index]));
+        System.out.println("Pagibig: " + f.format(Pagibigd[index]));
+        System.out.println("Philhealth: " + f.format (Phild[index]));
+        System.out.println("**************************************");
+        System.out.println("               Benefits");
+        System.out.println("**************************************");
+        System.out.println("Rice Subsidy: " + f.format (RiceSubsidy[index]));
+        System.out.println("Phone Allowance: " + f.format (PhoneAllowance[index]));
+        System.out.println("Clothing Allowance: " + f.format (ClothingAllowance[index]));
+        System.out.println("**************************************");
+        System.out.println("               Salary");
+        System.out.println("**************************************");
+        System.out.println("Salary Cutoff: 03/01/24 - 03/31/24" );
+        System.out.println("Basic Salary: " + f.format (BasicSalary[index]));
+        System.out.println("Overtime Pay: " + f.format(OT));
+        System.out.println("Gross Salary: " + f.format (TotalHrs));
+        System.out.println("Witholding Tax: " + f.format (Tax));
+        System.out.println("Net Salary: " + f.format(netSalary));
+         for (int i = 0; i < 1; i++)
+        System.out.println();
+         
+        // Clear the screen
+            try {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } catch (IOException | InterruptedException ex) {
+                System.out.println("Error clearing the screen.");
+            }
+        
+       
     }
 }
+
