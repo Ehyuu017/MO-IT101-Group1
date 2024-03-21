@@ -5,10 +5,16 @@
 package motorphps.motorph;
 
 
+
+
+
 /**
  *
  * @author Nesty
  */
+
+
+
 
 
 import java.io.IOException;
@@ -16,7 +22,7 @@ import java.util.Scanner;
 import java.text.DecimalFormat;
 
 public class MotorPH {
-     private static final DecimalFormat f = new DecimalFormat("0.00");
+    private static final DecimalFormat f = new DecimalFormat("0.00");
     public static void main(String[] args) {
         int[] employeeNumbers = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34};
         //Employee Details
@@ -712,16 +718,22 @@ public class MotorPH {
   
 
         Scanner scanner = new Scanner(System.in);
+        
+        try {
         System.out.println("Enter the employee number :");
         int choice = scanner.nextInt();
         
-        //Error Handling
+        if (choice > 34) {
+                throw new IllegalArgumentException(" ");
+            }
+        
+        /*Error Handling
         if (choice >= 1 && choice < 34) {
             } else {
         System.out.println("No Data Found. ");
         System.out.println("Enter the employee number :");
         choice = scanner.nextInt();
-        }
+        }*/
     
         //Employee Hours Work and Overtime
         System.out.print("Enter hours worked of Employee : ");
@@ -825,6 +837,12 @@ public class MotorPH {
         System.out.println("Net Salary: " + f.format(netSalary));
          for (int i = 0; i < 1; i++)
         System.out.println();
+
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        } finally {
+            
+        }
          
         // Clear the screen
             try {
